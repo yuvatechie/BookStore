@@ -1,0 +1,57 @@
+
+    
+  <!-- registration Part -->
+  
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Signup Form</span></div>
+        <form  #register="ngForm" (ngsubmit)="getData(register.value)">
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Email" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" required>
+          </div>
+          
+          <div class="row button">
+            <input type="submit" value="Signup">
+          </div>
+          <div class="signup-link">Already have account <a href="#">registration</a></div>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- login part -->
+
+
+  <div class="container">
+    <div class="wrapper">
+      <div class="title"><span>Login Form</span></div>
+      <form #login1="ngForm" (ngsubmit)="login(login1.value)"> 
+        <div class="row">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" required>
+        </div>
+        <div class="row">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <div class="pass"><a href="#">Forgot password?</a></div>
+        <div class="row button">
+          <input type="submit" value="Login">
+        </div>
+        <div class="signup-link">Create Account ? <a href="#">login</a></div>
+      </form>
+    </div>
+  </div>
+
+
+
+
