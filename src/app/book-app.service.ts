@@ -6,12 +6,30 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookAppService {
 
+  authenticationMssg :any
+  setMessage(data:any){
+    this.authenticationMssg= data;
+  }
 
-  private OrderUrl = "https://catfact.ninja/fact";
+  getMessage(){
+    return this.authenticationMssg;
+  }
+
+//   private OrderUrl = "https://catfact.ninja/fact";
   constructor(private httpClient: HttpClient) { }
 
-  getCatFactData(){
-    return this.httpClient.get(this.OrderUrl)
+//   getCatFactData(){
+//     return this.httpClient.get(this.OrderUrl)
+// }
+
+private UserinfoUrl ="https://localhost:7163/api/Usersinfoes";
+
+getUserinfo(){
+  return this.httpClient.get(this.UserinfoUrl);
 }
-  
+
+private UsersinfoPostUrl = "https://localhost:7163/api/Usersinfoes";
+postUserinfo(user:any){
+  return this.httpClient.post(this.UsersinfoPostUrl,user);
+}
 }

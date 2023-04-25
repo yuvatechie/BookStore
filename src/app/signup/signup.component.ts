@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { BookAppService } from '../book-app.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,26 +10,86 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  
-  constructor(private router:Router){}
 
-  ngOnInit():void{}
+  username :string ='';
+  email:string ='';
+  password:string ='';
+  usererrormssg :string='';
+  emailerrormssg :string='';
+  passworderrormssg :string='';
+  roleerrormssg :string='';
+  role:string ='';
+  
+  userData:any;
+  constructor(private router:Router, private bookapp:BookAppService){
+    bookapp.getUserinfo().subscribe(x=>{
+      this.userData=x;
+      console.log(x);
+    })
+
+  }
+
+  
 
   formData:any={}
 
-  registerData:any={};
+  // registerData:any={};
   
   getData(data:NgForm){
-    this.formData=data
-    alert("Success")
+    this.formData=data;
+    console.log(this.formData);
+    if((this.username=='') ){
+      this.usererrormssg="Please enter valid username";
+    }
+    if((this.email=='') ){
+      this.emailerrormssg="Please enter valid emailId";
+    }
+    if((this.password=='')){
+      this.passworderrormssg="Please enter valid password";
+    }
+    if((this.role=='')){
+      this.roleerrormssg="Mention Role";
+    }
+    // alert("Success");
+
+    this.bookapp.setMessage(this.formData);
+
+    //checking the signup data with usersinfo api
+    let exists = false;
+    for(var i=0;i <this.userData.length; i++){
+      if(this.userData[i].email== this.formData.email.trim()){
+        exists = true;
+      }
+    }
+    if(exists){
+      console.log("User already exists");
+    }
+    else{
+      this.bookapp.postUserinfo(this.formData).subscribe(x=>{
+        console.log("inserted succesfully")
+
+      })
+    }
+  }
+
+  ngOnInit():void{
+  
   }
   
 
-  login(data1:any){
-    this.registerData=data1
-  if(this.formData.Username==this.registerData.Username && this.formData.Password==this.registerData.Password){
-      alert ("login successful")
-      this.router.navigateByUrl('home')
-    }
-  }
+
+  // login(data1:any){
+  //   this.registerData=data1
+
+  //   if((this.username=='') || (this.password=='')){
+  //     this.errormssg="Please enter valid username and password";
+  //   }
+  // if(this.formData.Username==this.registerData.Username && this.formData.Password==this.registerData.Password){
+  //     alert ("login successful")
+  //     this.router.navigateByUrl('home')
+  //   }
+  // }
+
+
+  
 }

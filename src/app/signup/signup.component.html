@@ -1,57 +1,107 @@
 
-    
-  <!-- registration Part -->
-  
+
+
+
+
+  <!-- registration Part-->
+  <div class="outerBody">
     <div class="container">
-      <div class="wrapper">
-        <div class="title"><span>Signup Form</span></div>
-        <form  #register="ngForm" (ngsubmit)="getData(register.value)">
-          <div class="row">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" required>
-          </div>
-          <div class="row">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Email" required>
-          </div>
-          <div class="row">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" required>
-          </div>
+      <h2 class="login-title">Sign in</h2>
+      <form class="login-form" #register="ngForm" (ngSubmit)="getData(register.value)" >
+        <div>
+          <label for="name">Name </label>
+          <input id="name" type="text" ngModel class="form-control" #name name="name" [(ngModel)]="username" placeholder="Username"/>
+          <span>{{usererrormssg}}</span>
+        </div>
+        <div>
+          <label for="email">Email </label>
+          <input id="email" type="email"  ngModel class="form-control" #name name="email"  [(ngModel)]="email" placeholder="Email" />
+          <span>{{emailerrormssg}}</span>
+        </div>
+        <div>
+          <label for="password">Password </label>
+          <input id="password" type="password" ngModel class="form-control" #name name="password"  [(ngModel)]="password" placeholder="Password" />
+          <span>{{passworderrormssg}}</span>
+        </div>
+        <div>
+        <label for="password">Role </label>
+          <input id="password" type="text" ngModel class="form-control" #name name="role"  [(ngModel)]="role" placeholder="User/Admin" />
+          <span>{{roleerrormssg}}</span>
+        </div>
+        
+         
+          <button class="btn btn--form" id="reg" type="submit" >Register</button>
+          <div class="text-center pt-4 text-muted">Already have account?<a id="forget" routerLink="">Login</a></div>
           
-          <div class="row button">
-            <input type="submit" value="Signup">
-          </div>
-          <div class="signup-link">Already have account <a href="#">registration</a></div>
-        </form>
-      </div>
-    </div>
-
-
-    <!-- login part -->
-
-
-  <div class="container">
-    <div class="wrapper">
-      <div class="title"><span>Login Form</span></div>
-      <form #login1="ngForm" (ngsubmit)="login(login1.value)"> 
-        <div class="row">
-          <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" required>
-        </div>
-        <div class="row">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required>
-        </div>
-        <div class="pass"><a href="#">Forgot password?</a></div>
-        <div class="row button">
-          <input type="submit" value="Login">
-        </div>
-        <div class="signup-link">Create Account ? <a href="#">login</a></div>
       </form>
     </div>
   </div>
 
 
+    <!-- <div class="container">
+      <h2 class="login-title">Log in</h2>
+  
+      <form class="login-form">
+        <div>
+          <label for="name">Name </label>
+          <input
+                 id="name"
+                 type="text"
+                 placeholder="Eren Buruk"
+                 name="name"
+                 required
+                 />
+        </div>
+  
+        <div>
+          <label for="email">Email </label>
+          <input
+                 id="email"
+                 type="email"
+                 placeholder="me@example.com"
+                 name="email"
+                 required
+                 />
+        </div>
+  
+        <div>
+          <label for="password">Password </label>
+          <input
+                 id="password"
+                 type="password"
+                 placeholder="password"
+                 name="password"
+                 required
+                 />
+        </div>
+  
+        <button class="btn btn--form" type="submit" value="Log in">
+          Log in
+        </button>
+      </form>
+  </div>
+     -->
 
 
+    <!-- <form class="container-fluid" #register1="ngForm" (ngSubmit)="login(register1.value)" style="width: 400px;float: right; margin-top: 30px;margin-right: 100px;">
+      
+      <img class="mb-4" src="./assets/Logo.png" alt="" width="200" height="57">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div class="form-floating">
+            <input type="text" ngModel class="form-control" name="Username" [(ngModel)]="username" placeholder="name@example.com">
+            <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="text" ngModel class="form-control" name="Password"  [(ngModel)]="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3 mt-2">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" id="reg" >Login</button>
+        <span>{{errormssg}}</span>
+    </form> -->
