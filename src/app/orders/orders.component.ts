@@ -9,12 +9,19 @@ import { BookAppService } from '../book-app.service';
 })
 export class OrdersComponent {
 
-  // OrderApiData :any
+  OrderApiData :any
 
-  // constructor(private getData:BookAppService){
-  //   getData.getCatFactData().subscribe(x=>{
-  //     console.log(x)
-  //     this.OrderApiData = x
-  //   })
-  // }
+  constructor(private getData:BookAppService){
+    getData.OrderApi().subscribe(x=>{
+      console.log(x)
+      this.OrderApiData = x
+    })
+  }
+  Approve(){
+    alert("Accept")
+  }
+  Reject(){
+    alert("Reject")
+  }
+
 }
