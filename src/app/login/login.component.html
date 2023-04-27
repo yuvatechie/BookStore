@@ -2,23 +2,23 @@
 
  <div class="outerBody">
     <div class="container">
-      <h2 class="login-title">Login in</h2>
+      <h2 class="login-title">Sign In</h2>
       <form class="login-form" #register1="ngForm" (ngSubmit)="login(register1.value)"  >
         <div>
           <label for="name">UserName </label>
-          <input id="name" type="text" ngModel class="form-control"  name="username" [(ngModel)]="username" placeholder="Username"/>
-          <span>{{Usererrormssg}}</span>
+          <input id="name" type="text"  class="form-control" #username="ngModel" name="username" [(ngModel)]="form.username" placeholder="Username" [ngClass]="{error:username.errors?.['required']&&(username.dirty|| username.touched)}" required/>
+          <small *ngIf="username.errors?.['required'] && (username.dirty|| username.touched)" class="text-danger">Name is required</small>
         </div>
         
         <div>
           <label for="password">Password </label>
-          <input id="password" type="password" ngModel class="form-control" name="password"  [(ngModel)]="password" placeholder="Password"/>
-          <span>{{Passworerrormssg}}</span>
+          <input id="password" type="password"  class="form-control" #password="ngModel" name="password"  [(ngModel)]="form.password" placeholder="Password" [ngClass]="{error:password.errors?.['required']&&(password.dirty|| password.touched)}" required/>
+          <small *ngIf="password.errors?.['required'] && (password.dirty|| password.touched)" class="text-danger">Password is required</small>
         </div>
          
           <button class="btn btn--form" id="reg" >Login</button>
           <span>{{loginErrorMssg}}</span>
-          <div class="text-center pt-4 text-muted">Already have account?<a id="forget" routerLink="/register">Sign In</a></div>
+          <div class="text-center pt-4 text-muted">Already have account? <a id="forget" routerLink="/register" style="text-decoration: none;">Sign Up</a></div>
           
       </form>
     </div>

@@ -22,17 +22,24 @@ export class BookAppService {
 //     return this.httpClient.get(this.OrderUrl)
 // }
 
-private UserinfoUrl ="https://localhost:7000/api/Usersinfoes";
+private UserinfoUrl ="https://localhost:7163/api/Usersinfoes";
 
 getUserinfo(){
   return this.httpClient.get(this.UserinfoUrl);
 }
 
-private UsersinfoPostUrl = "https://localhost:7000/api/Usersinfoes";
+private UsersinfoPostUrl = "https://localhost:7163/api/Usersinfoes";
 postUserinfo(user:any){
   return this.httpClient.post(this.UsersinfoPostUrl,user);
 }
- private url='https://localhost:7000/api/Orders';
+
+//authentication based token
+// userAuthentication(username,password){
+
+// }
+
+
+ private url='https://localhost:7163/api/Orders';
  OrderApi(){ 
   return this.httpClient.get(this.url)
  }

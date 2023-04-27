@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 .outerBody{
-  margin: 0;
-  padding: 30px;
-  box-sizing: border-box;
+  font-family: sans-serif;
+  line-height: 1.4;
+  display: flex;
   font-family: 'Poppins',sans-serif;
- /* background: hsl(220, 70%, 74%); */
-  background-image: url("../../assets/images/chris-lawton-zvKx6ixUhWQ-unsplash.jpg");
+  background-image: url("../../assets/images/sincerely-media-_-hjiem5TqI-unsplash.jpg");
 
   /* Full height */
-  height: 100%;
+  height: 100vh;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+ 
 }
 ::selection{
   background: rgba(29, 87, 163, 0.3);
@@ -25,6 +25,9 @@
   padding: 0 20px;
   margin: 170px auto;
  
+}
+.error{
+  border:  1px solid red;
 }
 .wrapper{
   width: 100%;
@@ -90,11 +93,11 @@ form .row input::placeholder{
   text-decoration: none;
 }
 .wrapper form .pass a:hover{
-  text-decoration: underline;
+  text-decoration: none;
 }
 .wrapper form .button input{
   color: #fff;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 500;
   padding-left: 0px;
   background: #6194d6;
@@ -114,33 +117,14 @@ form .button input:hover{
   text-decoration: none;
 }
 form .signup-link a:hover{
-  text-decoration: underline;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  text-decoration: none;
 }
 
-html,
-body {
-  height: 100%;
-}
 
-html {
-  background: linear-gradient(to right bottom, #fbdb89, #f48982);
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  background-attachment: fixed;
-}
 
-body {
-  font-family: sans-serif;
-  line-height: 1.4;
-  display: flex;
-}
+
+
+
 
 .container {
   width: 400px;
@@ -172,9 +156,9 @@ body {
 
 .login-form input {
   width: 100%;
-  padding: 1.2rem;
+  padding: 9px;
   border-radius: 9px;
-  border: none;
+  
 }
 
 .login-form input:focus {
@@ -194,7 +178,7 @@ body {
 .btn:visited {
   display: inline-block;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
   border-radius: 9px;
   border: none;

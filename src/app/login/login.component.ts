@@ -11,11 +11,12 @@ import { BookAppService } from '../book-app.service';
 })
 
 export class LoginComponent{
-  username :string ='';
-  email:string ='';
-  password:string ='';
-  Usererrormssg :string='';
-  Passworerrormssg:string='';
+  form ={
+  username :'',
+  email:'',
+  password:''
+}
+ 
   loginErrorMssg :string='';
   
 
@@ -55,12 +56,12 @@ export class LoginComponent{
     this.loginData=data1
     // console.log(this.signinData)
 
-    if((this.username=='')){
-      this.Usererrormssg="Please enter valid username";
-    }
-    if((this.password=='')){
-      this.Passworerrormssg="Please enter valid password";
-    }
+    // if((this.username=='')){
+    //   this.Usererrormssg="Please enter valid username";
+    // }
+    // if((this.password=='')){
+    //   this.Passworerrormssg="Please enter valid password";
+    // }
   //  else  if(this.signinData.Username==this.registerData.Username && this.signinData.Password==this.registerData.Password){
   //     alert ("login successful");
   //     this.router.navigateByUrl('home');

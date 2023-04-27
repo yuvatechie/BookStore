@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { BookAppService } from '../book-app.service';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -10,24 +11,28 @@ import { BookAppService } from '../book-app.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-
-  username :string ='';
-  email:string ='';
-  password:string ='';
-  usererrormssg :string='';
-  emailerrormssg :string='';
-  passworderrormssg :string='';
-  roleerrormssg :string='';
-  role:string ='';
+form={
+  username :'',
+  email:'',
+  password:'',
+  
+  role:''
+}
   
   userData:any;
+
+  
+ 
+  
   constructor(private router:Router, private bookapp:BookAppService){
     bookapp.getUserinfo().subscribe(x=>{
       this.userData=x;
       console.log(x);
     })
-
+  
   }
+
+
 
   
 
@@ -38,18 +43,18 @@ export class SignupComponent {
   getData(data:NgForm){
     this.formData=data;
     console.log(this.formData);
-    if((this.username=='') ){
-      this.usererrormssg="Please enter valid username";
-    }
-    if((this.email=='') ){
-      this.emailerrormssg="Please enter valid emailId";
-    }
-    if((this.password=='')){
-      this.passworderrormssg="Please enter valid password";
-    }
-    if((this.role=='')){
-      this.roleerrormssg="Mention Role";
-    }
+    // if((this.username=='') ){
+    //   this.usererrormssg="Please enter valid username";
+    // }
+    // if((this.email=='') ){
+    //   this.emailerrormssg="Please enter valid emailId";
+    // }
+    // if((this.password=='')){
+    //   this.passworderrormssg="Please enter valid password";
+    // }
+    // if((this.role=='')){
+    //   this.roleerrormssg="Mention Role";
+    // }
     // alert("Success");
 
     this.bookapp.setMessage(this.formData);
@@ -90,6 +95,7 @@ export class SignupComponent {
   //   }
   // }
 
-
+ 
+ 
   
 }
