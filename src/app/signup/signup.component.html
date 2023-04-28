@@ -7,7 +7,7 @@
   <div class="outerBody">
     <div class="container">
       <h2 class="login-title">Sign Up</h2>
-      <form class="login-form"  #register="ngForm" (ngSubmit)="getData(register.value)" >
+      <form class="login-form"  #register="ngForm" (ngSubmit)="getData()" >
         <div >
           <label for="name">Name </label>
           <input id="name" type="text"  class="form-control" #username="ngModel" name="username" [(ngModel)]="form.username" placeholder="Username" [ngClass]="{error:username.errors?.['required']&&(username.dirty|| username.touched)}" required/>
@@ -28,13 +28,13 @@
 
           <!-- <span>{{passworderrormssg}}</span> -->
         </div>
-        <!-- <div>
+         <div>
         <label for="password">Role </label>
-          <input id="password" type="text" ngModel class="form-control" #name name="role"  [(ngModel)]="form.role" placeholder="User/Admin" [ngClass]="{error:email.errors?.['required']&&(email.dirty|| email.touched)}" required/>
-          <small *ngIf="email.errors?.['required'] && (email.dirty|| email.touched)" class="text-danger">Email is required</small>
+          <input id="password" type="text" ngModel class="form-control" #role="ngModel" name="role"  [(ngModel)]="form.role" placeholder="User/Admin" [ngClass]="{error:role.errors?.['required']&&(role.dirty|| role.touched)}" required/>
+          <!-- <small *ngIf="email.errors?.['required'] && (email.dirty|| email.touched)" class="text-danger">Email is required</small> -->
 
-           <span>{{roleerrormssg}}</span> 
-        </div>-->
+           
+        </div>
         
          
           <button class="btn btn--form" id="reg" type="submit" >Register</button>

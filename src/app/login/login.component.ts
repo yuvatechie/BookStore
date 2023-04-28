@@ -52,8 +52,13 @@ export class LoginComponent{
   // }
   
 
-  login(data1:any){
-    this.loginData=data1
+  login(){
+    const bodydata={
+      Email:this.form.email,
+      Name:this.form.username,
+      Password:this.form.password,
+     
+    }
     // console.log(this.signinData)
 
     // if((this.username=='')){
@@ -68,7 +73,7 @@ export class LoginComponent{
   //   }
     let count =0;
     for(var i=0; i<this.userData.length;i++ ){
-      if( this.userData[i].name==this.loginData.username  && this.userData[i].password==this.loginData.password.trim()){
+      if( this.userData[i].email==bodydata.Email  && this.userData[i].password==bodydata.Password.trim()){
         alert ("login successful");
         this.router.navigateByUrl('home');
         count++;
