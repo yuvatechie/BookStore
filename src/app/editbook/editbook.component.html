@@ -1,0 +1,40 @@
+
+<div class="container">
+    <div class="card mt-5 mx-5">
+        <div class="card-header p-3 fw-semibold fs-4">Edit Book</div>
+        <div class="card-body">
+    <form [formGroup]="editBook" (ngSubmit)="submit()">
+        <div class="row mb-3 mt-2">
+            <div class="col-6">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Book Name" formControlName="name">
+            </div>
+            <div class="col-6">
+                <label class="form-label">Author</label>
+                <input type="text" name="author_name" class="form-control" placeholder="Author" formControlName="author">
+            </div>
+            </div>
+            <div class="row mb-3">
+            <div class="col-6">
+                <label class="form-label"class="form-label">Publisher</label>
+                <input type="text" name="publish_name" class="form-control" placeholder="Publisher Name" formControlName="publisher">
+            </div>
+            <div class="col-6">
+                <label class="form-label">Price</label>
+                <input type="number" name="price" class="form-control" placeholder="Price" formControlName="price">
+            </div>
+            </div>
+            <div class="row mb-4">
+            <div class="col-6">
+                <label class="form-label">Date</label>
+                <input type="date" name="date" class="form-control" formControlName="date">
+            </div>
+            </div>
+            <div class="text-center">
+                <button type="butt" class="btn btn-primary me-2 w-10" (click)="back()">Cancel</button>
+                <button type="submit" class="btn btn-success w-10">Update</button>
+            </div>
+      </form>
+</div>
+</div>
+</div>  

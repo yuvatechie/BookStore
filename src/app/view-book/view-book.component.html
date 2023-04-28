@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <main class="container">
+ 
+        <!-- Left Column / Headphones Image -->
+        <div class="left-column">
+            
+        </div>
+       
+       
+        <!-- Right Column -->
+        <div class="right-column">
+            <a routerLink="/users_books" class="btn btn-outline-warning btn-lg mb-3">< Continue Shopping</a>
+
+          <!-- Product Description -->
+          <div class="product-description">
+            <span>Book</span>
+            <h3>{{book.name}}</h3>
+            <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+            <div class="row">
+                <div class="col-6">
+                    <b>Author</b> 
+                    <p>{{book.author}}</p>
+                </div>
+                <div class="col-6">
+                    <b>Published By</b> 
+                    <p>{{book.publisher}}</p>
+                </div>
+            </div>
+        </div>
+       
+        <form #cartForm="ngForm" (ngSubmit)="addToCart()">
+          <!-- Product Configuration -->
+          <div class="product-configuration">
+
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text btn btn-secondary" (click)="minus()">-</span>
+                            <input type="text" class="form-control" disabled value="{{i}}" style="text-align: center;" name="qty" [(ngModel)]="viewForm.qty" #qty="ngModel" required>
+                            <span class="input-group-text btn btn-secondary" (click)="plus()">+</span>
+                          </div>
+                    </div>
+                    <div class="col-8 initial-price">
+                        <span><b style="font-weight: 500; color:black; font-size: 18px;">Price: </b>{{book.price | currency:'&#8377;'}}</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+       
+          <!-- Product Pricing -->
+          <div class="product-price">
+               <span><b style="font-weight: 500; color:black; font-size: 18px;">Total Price: </b>{{totalPrice | currency:'&#8377;'}}</span>
+            <button type="submit" class="cart-btn btn">Add to cart</button>
+          </div>
+        </form>
+        </div>
+      </main>
+      
+</body>
+</html>

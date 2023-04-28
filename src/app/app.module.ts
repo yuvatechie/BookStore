@@ -9,6 +9,13 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookComponent } from './book/book.component';
+import { EditbookComponent } from './editbook/editbook.component';
+import { UserBookComponent } from './user-book/user-book.component';
+import { UsersCartsComponent } from './users-carts/users-carts.component';
+import { ViewBookComponent } from './view-book/view-book.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -16,14 +23,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     OrdersComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    BookComponent,
+    EditbookComponent,
+    UserBookComponent,
+    UsersCartsComponent,
+    ViewBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
