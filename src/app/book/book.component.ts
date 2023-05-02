@@ -9,13 +9,18 @@ import { BookAppService } from '../book-app.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit{
-  title = 'Book List';
 
+
+  title = 'Book List';
+  UserId = localStorage.getItem('id');
+  UserEmail = localStorage.getItem('email');
+  Name = localStorage.getItem('name');
+  Role = localStorage.getItem('role');
+  
   //Book List Variable
   bookList:any;
-
-  //Adding FormGroup
-  // id: number;
+  status:Number=0;
+  
 
   //Form Data Variable
   form = {
@@ -23,7 +28,8 @@ export class BookComponent implements OnInit{
   author : '',
   publisher : '',
   price : '',
-  date : ''
+  date : '',
+  link:''
   }
 
   constructor(private book: BookAppService, private router: Router, private route: ActivatedRoute ){
@@ -31,6 +37,8 @@ export class BookComponent implements OnInit{
   }
 
   ngOnInit():void{
+    let userId = localStorage.getItem('id');
+    console.log(userId)
     this.book.booklist().subscribe((allBook)=>{
       this.bookList = allBook;
     })
@@ -43,12 +51,15 @@ export class BookComponent implements OnInit{
       Author : this.form.author,
       Publisher : this.form.publisher,
       Price : this.form.price,
-      PublishDate : this.form.date
+      PublishDate : this.form.date,
+      BookLink : this.form.link
     };
 
-    this.book.createBook(bodyData).subscribe(()=>{
-      alert("Book Added Successfully"!);
-      window.location.reload();
+      this.book.createBook(bodyData).subscribe(()=>{
+      this.status = 1;
+      this.book.booklist().subscribe((allBook)=>{
+        this.bookList = allBook;
+      })
     })
   }
 
@@ -57,9 +68,17 @@ export class BookComponent implements OnInit{
     if(confirm("Are you sure you want to delete?"))
     {
       this.book.deleteBookByID(id).subscribe(()=>{
-        window.location.reload();
+        this.book.booklist().subscribe((allBook)=>{
+          this.bookList = allBook;
+        })
       });
     }
+   }
+
+   logout()
+   {
+     localStorage.clear();
+     this.router.navigate(['']);
    }
  
 }

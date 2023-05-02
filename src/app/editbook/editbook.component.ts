@@ -13,6 +13,10 @@ export class EditbookComponent {
   //Adding FormGroup
     editBook: FormGroup;
     id: number;
+    UserId = localStorage.getItem('id');
+    UserEmail = localStorage.getItem('email');
+    Name = localStorage.getItem('name');
+    Role = localStorage.getItem('role');
 
 
   constructor(private bookservice: BookAppService, 
@@ -26,7 +30,7 @@ export class EditbookComponent {
       author: '',
       publisher: '',
       price: '',
-      date: ''
+      publishDate: ''
 
      })
 
@@ -49,6 +53,11 @@ export class EditbookComponent {
       this.router.navigate(['/books']);
     }
 
-  
+    logout()
+    {
+      localStorage.clear();
+      this.router.navigate(['']);
+    }
+    
 }
 

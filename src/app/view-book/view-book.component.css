@@ -13,21 +13,26 @@ html, body {
   }
 
   .left-column {
-    width: 65%;
+    width: 40%;
     position: relative;
+    margin-left: 5%;
+    margin-top: 2%;
   }
    
   .right-column {
-    width: 35%;
+    width: 60%;
     margin-top: 60px;
   }
 
+  
+
+
   .left-column img {
-    width: 100%;
-    position: absolute;
+    /* width: 60%;
+    height: 60%; */
+    position: absolute; 
     left: 0;
     top: 0;
-    opacity: 0;
     transition: all 0.3s ease;
   }
    
@@ -146,4 +151,8 @@ html, body {
 }
 .cart-btn:hover {
   background-color: #64af3d;
+}
+
+.error{
+  border: 1px solid red;
 }

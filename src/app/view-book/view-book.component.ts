@@ -13,6 +13,12 @@ export class ViewBookComponent {
   id:number;
   i:number=0;
   totalPrice:number=0;
+  UserId = localStorage.getItem('id');
+  UserEmail = localStorage.getItem('email');
+  Name = localStorage.getItem('name');
+  Role = localStorage.getItem('role');
+  cartItems:any;
+  count:number=0;
 
   viewForm = {
     qty : this.i,
@@ -23,6 +29,13 @@ export class ViewBookComponent {
     this.id = this.route.snapshot.params['id'];
     this.http.getBookByID(this.id).subscribe((data)=>{
       this.book = data;
+    })
+
+    this.http.getCartByUserId(this.UserId).subscribe((cart)=>{
+      this.cartItems = cart;
+      for(var i=0; i<this.cartItems.length; i++){
+          this.count = this.cartItems.length;
+      }
     })
   }
 
@@ -41,7 +54,10 @@ export class ViewBookComponent {
   addToCart(){
 
     this.id = this.route.snapshot.params['id'];
+    let userId = localStorage.getItem('id');
+
     const bodyData = {
+      UserId : Number(userId),
       BookId : Number(this.id),
       Quantity : this.i,
       BookPrice : this.totalPrice
@@ -60,6 +76,11 @@ export class ViewBookComponent {
    
   }
 
+  logout()
+  {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
   // cart(id:number){
   //   console.log(id)
   // }

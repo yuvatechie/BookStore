@@ -1,10 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthResponse } from './auth-response';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookAppService {
+
+// <--------------- auth guard ---------->
+private loggedIn = false;
+private isAdminUser = false;
+
+login(username: string, password: string) {
+  // Perform login logic
+  if (username === 'admin' && password === 'password') {
+    this.isAdminUser = true;
+  }
+  this.loggedIn = true;
+}
+
+logout() {
+  // Perform logout logic
+  return this.loggedIn = false;
+  return this.isAdminUser
+}
+
+isLoggedIn(){
+ return this.loggedIn;
+}
+
+isAdmin(){
+  return this.isAdminUser
+}
+
+
+
 
   authenticationMssg :any
   setMessage(data:any){
@@ -22,15 +53,30 @@ export class BookAppService {
 //     return this.httpClient.get(this.OrderUrl)
 // }
 
-private UserinfoUrl ="https://localhost:7163/api/Usersinfoes";
-
-getUserinfo(){
-  return this.httpClient.get(this.UserinfoUrl);
+private Authurl="https://bsapi6191.azurewebsites.net/api/Users/login";
+getAuthinfo(loginuser: any): Observable<AuthResponse> {
+  return this.httpClient.post<AuthResponse>(`${this.Authurl}`, loginuser);
 }
 
-private UsersinfoPostUrl = "https://localhost:7163/api/Usersinfoes";
+storeToken(data:any){
+  localStorage.setItem('token',data.token);
+  localStorage.setItem('id',data.id);
+  localStorage.setItem('role',data.role);
+  localStorage.setItem('email',data.email);
+  localStorage.setItem('name',data.name);
+ }
+ getToken(){
+  return localStorage.getItem('token');
+ }
+
+private UserInfoUrl ="https://bsapi6191.azurewebsites.net/api/Users";
+
+getUserinfo(){
+  return this.httpClient.get(this.UserInfoUrl);
+}
+
 postUserinfo(user:any){
-  return this.httpClient.post(this.UsersinfoPostUrl,user);
+  return this.httpClient.post(this.UserInfoUrl,user);
 }
 
 //authentication based token
@@ -46,8 +92,9 @@ postUserinfo(user:any){
 
  //book crud and cart part
 
- book_url = "https://localhost:7236/api/Books";
-cart_url="https://localhost:7236/api/Carts";
+ book_url = "https://bsapi6191.azurewebsites.net/api/Books";
+ cart_url = "https://bsapi6191.azurewebsites.net/api/Carts";
+ order_url = "https://bsapi6191.azurewebsites.net/api/Orders"; 
 
   booklist(){
     return this.httpClient.get(this.book_url);
@@ -77,8 +124,24 @@ cart_url="https://localhost:7236/api/Carts";
     return this.httpClient.get(this.cart_url);
   }
 
+  getCartByUserId(id:any){
+    return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Carts/cartsByUsersId?userId="+id)
+  }
+
   deleteCartByID(id:number){
-    return this.httpClient.delete(this.cart_url + '/' +id);
+    return this.httpClient.delete(`${this.cart_url}/${id}`);
+  }
+
+  getCartById(id:number){
+    return this.httpClient.get(this.cart_url + '/' + id);
+  }
+
+  addOrderItems(data:any){
+    return this.httpClient.post(this.order_url,data);
+  }
+
+  addOrder(data:any){
+    return this.httpClient.post(this.order_url,data);
   }
 
 }

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { BookAppService } from '../book-app.service';
+import { AuthResponse } from '../auth-response';
 
 @Component({
   selector: 'app-login',
@@ -11,71 +12,45 @@ import { BookAppService } from '../book-app.service';
 })
 
 export class LoginComponent{
-  form ={
+  form = {
   username :'',
   email:'',
-  password:''
+  password:'',
+  token:''
 }
  
   loginErrorMssg :string='';
-  
-
+  loginData:any={};
   signinData:any;
+  userData:any={};
 
-  userData:any;
   constructor(private router:Router, private bookapp:BookAppService){
-    bookapp.getUserinfo().subscribe(x=>{
+    this.bookapp.getUserinfo().subscribe((x)=>{
       this.userData=x;
-      console.log(x);
     })
   }
 
   ngOnInit():void{
     this.signinData = this.bookapp.getMessage()
-  }
-
-  
-
-
-  loginData:any={};
-
-
-
-  
-  // getData(data:NgForm){
-  //   this.formData=data;
-  //   console.log(this.formData);
-  //   if((this.username=='') || (this.password=='')){
-  //     this.errormssg="Please enter valid username and password";
-  //   }
-  //   alert("Success");
-  // }
-  
+    console.log(this.userData)
+  } 
 
   login(){
     const bodydata={
       Email:this.form.email,
       Name:this.form.username,
       Password:this.form.password,
+      Token:this.form.token
      
     }
-    // console.log(this.signinData)
-
-    // if((this.username=='')){
-    //   this.Usererrormssg="Please enter valid username";
-    // }
-    // if((this.password=='')){
-    //   this.Passworerrormssg="Please enter valid password";
-    // }
-  //  else  if(this.signinData.Username==this.registerData.Username && this.signinData.Password==this.registerData.Password){
-  //     alert ("login successful");
-  //     this.router.navigateByUrl('home');
-  //   }
+   
     let count =0;
     for(var i=0; i<this.userData.length;i++ ){
       if( this.userData[i].email==bodydata.Email  && this.userData[i].password==bodydata.Password.trim()){
-        alert ("login successful");
-        this.router.navigateByUrl('home');
+        if(bodydata.Email != '' && bodydata.Password != '')
+        {
+          this.router.navigateByUrl('home');
+        }
         count++;
       }
     }
@@ -83,6 +58,27 @@ export class LoginComponent{
       this.loginErrorMssg="Inavlid Username and Password";
     }
 
+    //for generating Token
+    if (count > 0) {
+      this.bookapp.getAuthinfo(bodydata).subscribe(
+        (res) => {
+          const data = {
+            token: res.token,
+            id: res.id,
+            role: res.role,
+            email: res.email,
+            name: res.name
+          }
+          this.bookapp.storeToken(data);
+          console.log(res);
+          
+        }
+      );
+    }
+
+    
+      
+  
 
   }
 

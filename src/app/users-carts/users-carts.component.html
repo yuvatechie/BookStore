@@ -4,11 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
+  <nav class="navbar navbar-expand-sm bg-warning ">
+    <div class="container-fluid">
+        <span class="navbar-text "><i class="fa fa-book" style="color: black; font-size: 32px;"></i><b style="color: black; font-family: 'Kalam';font-size: 28px;"> The Bookclub</b></span>
+    </div>
+    <div class="container-fluid justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-user-circle" style="font-size:24px"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">{{Name}}</a></li>
+                  <li><a class="dropdown-item" href="#">{{UserEmail}}</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">{{Role}}</a></li>
+                </ul>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <i class="fa fa-home" style="font-size:20px"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="#">My Orders <i class="fa fa-shopping-bag" style="font-size:15px"></i></a>
+            </li>
+            <li class="nav-item ms-5">
+                <span class="nav-link text-dark btn btn-light border-dark" (click)="logout()" style="cursor:pointer">Logout <i class="fa fa-power-off" style="font-size:15px"></i></span>
+            </li>
+            <li class="fa fa-shopping-cart nav-item ms-3 me-2" routerLink="/carts"
+                            style="font-size: 38px; color:black; cursor: pointer;">
+                            <span class="position-absolute start-10 translate-middle badge bg-danger"
+                                style="font-size:9px">
+                                {{count}}
+                            </span>
+                </li>
+        </ul>
+    </div>
+
+</nav>
     <section class="h-100 h-custom">
         <div class="container h-100 py-5">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -38,15 +75,15 @@
                         </div>
                       </th>
                       <td class="align-middle">
-                        <p class="mb-0" style="font-weight: 500;">{{c.bookId}}</p>
+                        <p class="mb-0" style="font-weight: 500;">{{c.bookId | currency:'&#8377;'}}</p>
                       </td>
                       <td class="align-middle">
                         <div class="d-flex flex-row">
-                          {{c.quantity}}
+                          {{c.quantity}} Qty
                         </div>
                       </td>
                       <td class="align-middle">
-                        <p class="mb-0" style="font-weight: 500;">{{c.bookPrice}}</p>
+                        <p class="mb-0" style="font-weight: 500;">{{c.bookPrice | currency:'&#8377;'}}</p>
                       </td>
                       <td class="align-middle">
                         <i class="fa fa-trash-o" style="font-size: 30px; cursor:pointer; color:red" (click)="cartDelete(c.id)"></i>
@@ -61,22 +98,22 @@
       
                   <div class="row">
                     <div class="col-md-6 col-lg-4 col-xl-3 mb-4 mb-md-0">
-                        <a routerLink="/users_books" class="btn btn-outline-warning btn-lg mb-3">< Continue Shopping</a>
+                        <a routerLink="/home" class="btn btn-outline-warning btn-lg mb-3">< Continue Shopping</a>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-xl-6">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                       <div class="row">
                         
                       </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3">
+                    <div class="col-lg-4 col-xl-6">
                       <div class="d-flex justify-content-between" style="font-weight: 500;">
                         <p class="mb-2">Subtotal</p>
                         <p class="mb-2">{{sum | currency:'&#8377;'}}</p>
                       </div>
       
                       <div class="d-flex justify-content-between" style="font-weight: 500;">
-                        <p class="mb-0">Shipping</p>
-                        <p class="mb-0">₹ 2.99</p>
+                        <p class="mb-0">Shipping Charges</p>
+                        <p class="mb-0">{{0 | currency:'&#8377;'}}</p>
                       </div>
       
                       <hr class="my-4">
@@ -86,9 +123,9 @@
                         <p class="mb-2">{{sum | currency:'&#8377;'}}</p>
                       </div>
       
-                      <button type="button" class="btn btn-primary btn-block btn-lg">
+                      <button type="button" class="btn btn-primary btn-block btn-lg" [routerLink]="['/payments']" [ngClass]="sum == 0? 'disabled' : 'enable'">
                         <div class="d-flex justify-content-between">
-                          <span>Checkout</span>
+                          <span>Proceed to Checkout</span>&nbsp;&nbsp;
                           <span>{{sum | currency:'&#8377;'}}</span>
                         </div>
                       </button>

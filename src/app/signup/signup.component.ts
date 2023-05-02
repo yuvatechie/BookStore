@@ -15,14 +15,11 @@ form={
   username :'',
   email:'',
   password:'',
-  role:''
+  role:'user'
 }
   
   userData:any;
 
-  
- 
-  
   constructor(private router:Router, private bookapp:BookAppService){
     bookapp.getUserinfo().subscribe(x=>{
       this.userData=x;
@@ -61,7 +58,15 @@ form={
       
       this.bookapp.postUserinfo(bodydata).subscribe(x=>{
         console.log("inserted succesfully")
-        this.router.navigateByUrl('');
+        if(bodydata.Email != '' && bodydata.Name != '' && bodydata.Password != '' )
+        {
+          this.router.navigateByUrl('');
+        }
+        else
+        {
+          this.router.navigateByUrl('register');
+        }
+        
       })
     }
   }

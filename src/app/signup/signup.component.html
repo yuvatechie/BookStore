@@ -28,16 +28,16 @@
 
           <!-- <span>{{passworderrormssg}}</span> -->
         </div>
-         <div>
+         <!-- <div>
         <label for="password">Role </label>
-          <input id="password" type="text" ngModel class="form-control" #role="ngModel" name="role"  [(ngModel)]="form.role" placeholder="User/Admin" [ngClass]="{error:role.errors?.['required']&&(role.dirty|| role.touched)}" required/>
+          <input id="password" type="hidden" ngModel class="form-control" #role="ngModel" name="role"  [(ngModel)]="form.role" placeholder="User/Admin" [ngClass]="{error:role.errors?.['required']&&(role.dirty|| role.touched)}" required/> -->
           <!-- <small *ngIf="email.errors?.['required'] && (email.dirty|| email.touched)" class="text-danger">Email is required</small> -->
 
            
-        </div>
+        <!-- </div> -->
         
          
-          <button class="btn btn--form" id="reg" type="submit" >Register</button>
+          <button class="btn btn--form mt-3" id="reg" type="submit" >Sign Up</button>
           <div class="text-center pt-4 text-muted">Already have account?  <a id="forget" routerLink="" style="text-decoration: none;">Sign in</a></div>
           
       </form>

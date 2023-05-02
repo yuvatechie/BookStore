@@ -4,9 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders/orders.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
-import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookComponent } from './book/book.component';
@@ -15,6 +14,9 @@ import { UserBookComponent } from './user-book/user-book.component';
 import { UsersCartsComponent } from './users-carts/users-carts.component';
 import { ViewBookComponent } from './view-book/view-book.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { PaymentComponent } from './payments/payment/payment.component';
+import { TokenInterceptor } from './token.interceptor';
+import { UserOrderComponent } from './userOrder/user-order/user-order.component'; 
 
 
 @NgModule({
@@ -23,12 +25,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     LoginComponent,
     OrdersComponent,
     SignupComponent,
-    HomeComponent,
     BookComponent,
     EditbookComponent,
     UserBookComponent,
     UsersCartsComponent,
-    ViewBookComponent
+    ViewBookComponent,
+    PaymentComponent,
+    UserOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ReactiveFormsModule,
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [{
+          provide:HTTP_INTERCEPTORS,
+          useClass:TokenInterceptor,
+          multi:true
+        }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
