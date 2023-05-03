@@ -48,15 +48,13 @@ export class LoginComponent{
     for(var i=0; i<this.userData.length;i++ ){
       if(this.userData[i].email==bodydata.Email  && this.userData[i].password==bodydata.Password.trim()){
         
-        if(this.form.email == 'janedoe@example.com')
-        {
+       if(bodydata.Email == 'janedoe@example.com'){
           this.router.navigate(['/admin/books']);
         }
         else if(bodydata.Email != '' && bodydata.Password != '')
         {
           this.router.navigateByUrl('home');
         }
-       
         count++;
       }
     }

@@ -35,9 +35,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <i class="fa fa-home" style="font-size:20px"></i></a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link text-dark" href="#">My Orders <i class="fa fa-shopping-bag" style="font-size:15px"></i></a>
-                </li>
+                </li> -->
                 <li class="nav-item ms-5">
                     <span class="nav-link text-dark btn btn-light" (click)="logout()" style="cursor:pointer; background-color: whitesmoke; border-color: black;">Logout <i class="fa fa-power-off" style="font-size:15px"></i></span>
                 </li>
@@ -59,13 +59,13 @@
                     <div class='summary'>
                         <h2>Summary</h2>
                         <h5>Order #0101</h5>
-                        <!-- <ul class='order-list' *ngFor="let item of cartItems">
-                            <li><img src='../../assets/images/viewbook.jpg'> -->
-                                <!-- <h4>Jordan Eclipse &nbsp;&nbsp;&nbsp;<i class="fa fa-remove" style="cursor: pointer;" (click)="cartDelete(item.id)"></i></h4> -->
-                                <!-- <h5>{{item.bookPrice | currency:'&#8377;'}}</h5>
+                         <ul class='order-list' *ngFor="let item of cartItems">
+                            <li><img src='../../assets/images/viewbook.jpg'>
+                                 <h4>{{item.book.name}} &nbsp;&nbsp;&nbsp;<i class="fa fa-remove" style="cursor: pointer;" (click)="cartDelete(item.id)"></i></h4>
+                                 <h5>{{item.bookPrice | currency:'&#8377;'}}</h5>
                                 <h5>Qty: {{item.quantity}}</h5>
                             </li>
-                        </ul> -->
+                        </ul>
                         <!-- <h5 class="mt-5">Shipping</h5>
                         <h4>{{0 | currency:'&#8377;'}}</h4> -->
                         <h5 class='total'>Total</h5>

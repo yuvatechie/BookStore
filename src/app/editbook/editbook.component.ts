@@ -31,7 +31,6 @@ export class EditbookComponent {
       publisher: '',
       price: '',
       publishDate: ''
-
      })
 
     this.id = this.route.snapshot.params['id'];
@@ -50,7 +49,7 @@ export class EditbookComponent {
     }
 
   back(){
-      this.router.navigate(['/books']);
+      this.router.navigate(['/admin/books']);
     }
 
     logout()
@@ -58,6 +57,6 @@ export class EditbookComponent {
       localStorage.clear();
       this.router.navigate(['']);
     }
-    
+
 }
 

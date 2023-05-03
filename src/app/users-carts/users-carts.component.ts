@@ -35,14 +35,14 @@ export class UsersCartsComponent {
     
   }
 
-  // cartDelete(id:number){
-  //   this.http.deleteCartByID(id).subscribe(()=>{
-  //     this.http.getCart().subscribe((cart)=>{
-  //       this.sum = this.sum - this.book_rate.bookPrice;
-  //     }) 
-  //   })
-  //   this.http.getCartById(id).subscribe((c)=>{this.book_rate = c})
-  // }
+   cartDelete(id:number){
+    this.http.deleteCartByID(id).subscribe(()=>{
+       this.http.getCart().subscribe((cart)=>{
+         this.sum = this.sum - this.book_rate.bookPrice;
+       }) 
+     })
+     this.http.getCartById(id).subscribe((c)=>{this.book_rate = c})
+   }
 
   logout()
   {

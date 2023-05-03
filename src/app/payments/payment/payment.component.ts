@@ -29,7 +29,7 @@ export class PaymentComponent {
           this.sum = this.cartItems[i].bookPrice + this.sum;
           this.count = this.cartItems.length;
         }
-      
+      console.log(cart)
     })
   }
 
@@ -59,13 +59,15 @@ export class PaymentComponent {
         OrderDate: this.Date,
         TotalPrice: this.sum,
         PaymentStatus: true,
-        // CartId: this.cartItems[i].id
+        CartId: this.cartItems[i].id
       }
 
       console.log(bodyData)
       if (this.sum > 0) {
         this.http.addOrder(bodyData).subscribe(() => {
-          console.log(bodyData)
+          this.http.deleteCartByID(this.cartItems[i].id).subscribe(()=>{
+            console.log("deleted cart items")
+          })
         });
       }
     }

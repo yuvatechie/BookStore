@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     component: EditbookComponent,
-    path: 'books/:id/edit',
+    path: 'admin/books/:id/edit',
     canActivate: [AuthGuard]
   },
   {
