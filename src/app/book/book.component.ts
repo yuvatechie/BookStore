@@ -19,8 +19,7 @@ export class BookComponent implements OnInit{
   
   //Book List Variable
   bookList:any;
-  status:Number=0;
-  
+
 
   //Form Data Variable
   form = {
@@ -56,7 +55,6 @@ export class BookComponent implements OnInit{
     };
 
       this.book.createBook(bodyData).subscribe(()=>{
-      this.status = 1;
       this.book.booklist().subscribe((allBook)=>{
         this.bookList = allBook;
       })

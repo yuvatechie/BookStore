@@ -43,11 +43,11 @@
     <div class="card-header mb-2">
        Book List
       <!------------------------------- Alert Message ------------------------------->
-      <div class="alert alert-success alert-dismissible fade show float-start" role="alert" *ngIf="status==1"
+      <!-- <div class="alert alert-success alert-dismissible fade show float-start" role="alert" *ngIf="status==1"
         style="width:20%;">
         Added successfully!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      </div> -->
 
       <!------------------------------------ Insert Button ---------------------------------->
       <button type="button" class="btn btn-primary me-2 float-end" data-bs-toggle="modal"
@@ -96,7 +96,7 @@
             </td>
             <td>
               <!---------------------------------- Edit Button ---------------------------------------->
-              <a routerLink="/admin/books/{{i.id}}/edit" class="btn btn-outline-warning me-2 btn-sm">Edit</a>
+              <!-- <a routerLink="/admin/books/{{i.id}}/edit" class="btn btn-outline-warning me-2 btn-sm">Edit</a> -->
               <!--------------------------------- Delete Button --------------------------------------->
               <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(i.id)">Delete</button>
             </td>

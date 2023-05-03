@@ -41,12 +41,12 @@ export class EditbookComponent {
     console.log(this.id)
   }
 
-  submit(){
-    this.bookservice.updateByID(this.route.snapshot.params['id'], this.editBook.value).subscribe(()=>{
-    this.router.navigate(['/books']);
-       })
-    console.log(this.editBook.value);
-    }
+  // submit(){
+  //   this.bookservice.updateByID(this.route.snapshot.params['id'], this.editBook.value).subscribe(()=>{
+  //   this.router.navigate(['/admin/books']);
+  //      })
+  //   console.log(this.editBook.value);
+  //   }
 
   back(){
       this.router.navigate(['/admin/books']);

@@ -58,9 +58,7 @@ export class LoginComponent{
         count++;
       }
     }
-    if(count==0){
-      this.loginErrorMssg="Inavlid Username and Password";
-    }
+    
 
     //for generating Token
     if (count > 0) {

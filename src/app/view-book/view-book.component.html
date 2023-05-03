@@ -28,9 +28,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <i class="fa fa-home" style="font-size:20px"></i></a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">My Orders <i class="fa fa-shopping-bag" style="font-size:15px"></i></a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link text-dark" [routerLink]="['/myorders']"  >My Orders <i class="fa fa-shopping-bag" style="font-size:15px"></i></a>
+                </li> 
                 <li class="nav-item ms-5">
                     <span class="nav-link text-dark btn btn-light border-dark" (click)="logout()" style="cursor:pointer">Logout <i class="fa fa-power-off" style="font-size:15px"></i></span>
                 </li>

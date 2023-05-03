@@ -108,9 +108,9 @@ postUserinfo(user:any){
     return this.httpClient.get(this.book_url + '/'+ id);
   }
 
-  updateByID(id:number, data:any){
-    return this.httpClient.put(`${this.book_url}/${id}`, data);
-  }
+  // updateByID(id:number, data:any){
+  //   return this.httpClient.put("https://bsapi6191.azurewebsites.net/api/Books" + '/' + id, data);
+  // }
 
   deleteBookByID(id:number){
     return this.httpClient.delete(this.book_url + '/' + id);
@@ -118,6 +118,10 @@ postUserinfo(user:any){
 
   addCart(data:any){
     return this.httpClient.post(this.cart_url,data);
+  }
+
+  getOrderByUserId(id:any){
+    return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Orders/ordersByUsersId?userId="+id);
   }
 
   getCart(){

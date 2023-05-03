@@ -48,8 +48,8 @@
     <thead class="table-dark">
       <tr>
         <th scope="col">Sr.No</th>
-        <th scope="col">Userid</th>
-        <th scope="col">BookId</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Book Name</th>
         <th scope="col">PaymentStatus</th>
         <th scope="col">Amount</th>
         <th scope="col">Actions</th>
@@ -58,13 +58,16 @@
     <tbody>
       <tr *ngFor="let list of OrderApiData; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td>{{list.userId}}</td>
-        <td>{{list.bookId}}</td>
-        <td>{{list.paymentStatus}}</td>
+        <td>{{list.user.name}}</td>
+        <td>{{list.book.name}}</td>
+        <td>
+          <span *ngIf="list.paymentStatus == true">Paid</span>
+          <span *ngIf="list.paymentStatus == false">Pending</span>
+        </td>
         <td>{{list.totalPrice}}</td>
         <td>
-             <button class="btn btn-success btn-sm me-2"(click)="Approve()">Approve</button>
-             <button class="btn btn-danger btn-sm"(click)="Reject(list.id)" >Reject</button>
+             <button class="btn btn-outline-success btn-sm me-2"(click)="Approve()">Approve</button>
+             <button class="btn btn-outline-danger btn-sm"(click)="Reject(list.id)" >Reject</button>
         </td>
       </tr>
       

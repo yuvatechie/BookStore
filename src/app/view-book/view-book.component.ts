@@ -35,6 +35,7 @@ export class ViewBookComponent {
       this.cartItems = cart;
       for(var i=0; i<this.cartItems.length; i++){
           this.count = this.cartItems.length;
+          console.log(this.count)
       }
     })
   }
@@ -68,8 +69,13 @@ export class ViewBookComponent {
     }
     else{
       this.http.addCart(bodyData).subscribe(()=>{
-        alert("Added to cart Successfully!")
-        this.router.navigate(['/users_books'])
+        alert("Added to cart Successfully!");
+        this.http.getCartByUserId(this.UserId).subscribe((cart)=>{
+          this.cartItems = cart;
+          for(var i=0; i<this.cartItems.length; i++){
+              this.count = this.cartItems.length;
+          }
+        })
       });
       console.log(bodyData)
     }

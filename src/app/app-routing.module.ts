@@ -11,6 +11,7 @@ import { UsersCartsComponent } from './users-carts/users-carts.component';
 import { PaymentComponent } from './payments/payment/payment.component';
 import { AuthGuard } from './authguard/auth.guard';
 import { AuthenticateGuard } from './authenticateGuard/authenticate.guard';
+import { UserOrderComponent } from './userOrder/user-order/user-order.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     component: ViewBookComponent,
     path: 'view/:id/books',
+    canActivate:[AuthenticateGuard]
+  },
+  {
+    component: UserOrderComponent,
+    path: 'myorders',
     canActivate:[AuthenticateGuard]
   },
   {
