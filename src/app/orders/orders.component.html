@@ -24,10 +24,10 @@
             <a class="nav-link text-dark" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <i class="fa fa-home" style="font-size:20px"></i></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" [routerLink]="['/order']" routerLinkActive="router-link-active" >Orders <i class="fa fa-shopping-bag" style="font-size:15px"></i></a>
+            <a class="nav-link text-dark" [routerLink]="['/admin/order']" routerLinkActive="router-link-active" >Orders <i class="fa fa-shopping-bag" style="font-size:15px"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" [routerLink]="['/books']" routerLinkActive="router-link-active" >Books <i class="fa fa-book" style="font-size:17px"></i></a>
+          <a class="nav-link text-dark" [routerLink]="['/admin/books']" routerLinkActive="router-link-active" >Books <i class="fa fa-book" style="font-size:17px"></i></a>
         </li>
         <li class="nav-item ms-5">
             <span class="nav-link text-dark btn btn-light border-dark" (click)="logout()" style="cursor:pointer">Logout <i class="fa fa-power-off" style="font-size:15px"></i></span>
@@ -53,15 +53,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let list of OrderApiData ">
-        <th scope="row">1</th>
+      <tr *ngFor="let list of OrderApiData; let i = index">
+        <th scope="row">{{i+1}}</th>
         <td>{{list.userId}}</td>
         <td>{{list.bookId}}</td>
         <td>{{list.paymentStatus}}</td>
-        <td>{{list.amount}}</td>
+        <td>{{list.totalPrice}}</td>
         <td>
              <button class="btn btn-success me-2"(click)="Approve()">Approve</button>
-             <button class="btn btn-danger"(click)="Reject()" >Reject</button>
+             <button class="btn btn-danger"(click)="Reject(list.id)" >Reject</button>
         </td>
       </tr>
       

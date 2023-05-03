@@ -128,6 +128,10 @@ postUserinfo(user:any){
     return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Carts/cartsByUsersId?userId="+id)
   }
 
+  getBookByBookId(){
+    return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Carts/carts-with-orders");
+  }
+
   deleteCartByID(id:number){
     return this.httpClient.delete(`${this.cart_url}/${id}`);
   }
@@ -138,6 +142,15 @@ postUserinfo(user:any){
 
   addOrderItems(data:any){
     return this.httpClient.post(this.order_url,data);
+  }
+
+  getOrder()
+  {
+     return this.httpClient.get(this.order_url);
+  }
+
+  deleteOrderById(id:number){
+    return this.httpClient.delete(this.order_url+'/'+id)
   }
 
   addOrder(data:any){

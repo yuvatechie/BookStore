@@ -17,7 +17,7 @@ export class OrdersComponent {
   Role = localStorage.getItem('role');
 
   constructor(private getData:BookAppService, private router:Router){
-    getData.OrderApi().subscribe(x=>{
+    this.getData.getOrder().subscribe(x=>{
       console.log(x)
       this.OrderApiData = x
     })
@@ -25,8 +25,13 @@ export class OrdersComponent {
   Approve(){
     alert("Accept")
   }
-  Reject(){
-    alert("Reject")
+  Reject(id:number){
+    this.getData.deleteOrderById(id).subscribe(()=>{
+      this.getData.getOrder().subscribe(x=>{
+        console.log(x)
+        this.OrderApiData = x
+      })
+    });
   }
 
   logout()

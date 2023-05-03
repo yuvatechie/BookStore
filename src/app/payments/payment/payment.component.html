@@ -59,15 +59,15 @@
                     <div class='summary'>
                         <h2>Summary</h2>
                         <h5>Order #0101</h5>
-                        <ul class='order-list' *ngFor="let item of cartItems">
-                            <li><img src='../../assets/images/viewbook.jpg'>
-                                <h4>Jordan Eclipse &nbsp;&nbsp;&nbsp;<i class="fa fa-remove" style="cursor: pointer;" (click)="cartDelete(item.id)"></i></h4>
-                                <h5>{{item.bookPrice | currency:'&#8377;'}}</h5>
+                        <!-- <ul class='order-list' *ngFor="let item of cartItems">
+                            <li><img src='../../assets/images/viewbook.jpg'> -->
+                                <!-- <h4>Jordan Eclipse &nbsp;&nbsp;&nbsp;<i class="fa fa-remove" style="cursor: pointer;" (click)="cartDelete(item.id)"></i></h4> -->
+                                <!-- <h5>{{item.bookPrice | currency:'&#8377;'}}</h5>
                                 <h5>Qty: {{item.quantity}}</h5>
                             </li>
-                        </ul>
-                        <h5 class="mt-5">Shipping</h5>
-                        <h4>{{0 | currency:'&#8377;'}}</h4>
+                        </ul> -->
+                        <!-- <h5 class="mt-5">Shipping</h5>
+                        <h4>{{0 | currency:'&#8377;'}}</h4> -->
                         <h5 class='total'>Total</h5>
                         <h1 style="padding-bottom: 7%;">{{sum | currency:'&#8377;'}}</h1>
                     </div>
