@@ -23,6 +23,7 @@ export class UsersCartsComponent {
   constructor(private http: BookAppService, private router: Router){
     this.http.getCartByUserId(this.UserId).subscribe((cart)=>{
       this.cartItems = cart;
+      console.log(cart);
       for(var i=0; i<this.cartItems.length; i++){
           this.sum = this.cartItems[i].bookPrice + this.sum;
           this.count = this.cartItems.length;
