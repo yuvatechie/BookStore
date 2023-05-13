@@ -85,7 +85,7 @@ postUserinfo(user:any){
 // }
 
 
- private url='https://localhost:7163/api/Orders';
+ private url='https://bsapi6191.azurewebsites.net/api/Orders';
  OrderApi(){ 
   return this.httpClient.get(this.url)
  }
