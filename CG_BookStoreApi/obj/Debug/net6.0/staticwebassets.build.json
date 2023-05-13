@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "bPCr1wmwmbDqmUDMmUmgvggogZtBkG3TKipO7lUTEuw=",
+  "Source": "CG_BookStoreApi",
+  "BasePath": "_content/CG_BookStoreApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
