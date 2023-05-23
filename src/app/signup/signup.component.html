@@ -37,7 +37,8 @@
         <!-- </div> -->
         
          
-          <button class="btn btn--form mt-3" id="reg" type="submit" >Sign Up</button>
+          <button class="btn btn--form mt-3" id="reg" type="submit" [disabled]="register.form.status==='INVALID'">Sign Up</button>
+          
           <div class="text-center pt-4 text-muted">Already have account?  <a id="forget" routerLink="" style="text-decoration: none;">Sign in</a></div>
           
       </form>

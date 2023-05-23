@@ -44,7 +44,7 @@ export class BookComponent implements OnInit{
   }
 
   addBook(){
-
+    
     const bodyData = {
       Name : this.form.name,
       Author : this.form.author,
@@ -56,9 +56,12 @@ export class BookComponent implements OnInit{
 
       this.book.createBook(bodyData).subscribe(()=>{
       this.book.booklist().subscribe((allBook)=>{
+        
         this.bookList = allBook;
+        
       })
     })
+  
   }
 
 

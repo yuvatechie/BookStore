@@ -59,7 +59,8 @@
                   <th>Name</th>
                   <th>TotalPrice</th>
                   <th>Date</th>
-                  <th>Link</th>
+                  <!-- <th>Link</th> -->
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,9 +78,11 @@
                   <td>
                     {{i.orderDate | date:'dd-MM-yyyy'}}
                   </td>
-                  <td>
+                  <!-- <td>
                     {{i.book.bookLink}}
-                  </td>
+                  </td> -->
+                  <td><a href="https://www.thebookcollector.co.uk/sites/default/files/the-book-collector-example-2018-04.pdf" target="_blank" download="Acme.pdf">Download pdf file</a></td>
+               
                 </tr>
               </tbody>
             </table>

@@ -18,7 +18,7 @@
           <small *ngIf="password.errors?.['required'] && (password.dirty|| password.touched)" class="text-danger">Password is required</small>
         </div>
          
-          <button class="btn btn--form mt-3" id="reg" >Login</button>
+          <button class="btn btn--form mt-3" id="reg" [disabled]="register1.form.status==='INVALID'">Login</button>
           <small class="text-danger">{{loginErrorMssg}}</small>
           <div class="text-center pt-4 text-muted">Don't have an account? <a id="forget" routerLink="/register" style="text-decoration: none;">Sign Up</a></div>
           

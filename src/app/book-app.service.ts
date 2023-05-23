@@ -53,7 +53,7 @@ isAdmin(){
 //     return this.httpClient.get(this.OrderUrl)
 // }
 
-private Authurl="https://bsapi6191.azurewebsites.net/api/Users/login";
+private Authurl="https://apibook61.azurewebsites.net/api/Users/login";
 getAuthinfo(loginuser: any): Observable<AuthResponse> {
   return this.httpClient.post<AuthResponse>(`${this.Authurl}`, loginuser);
 }
@@ -69,7 +69,7 @@ storeToken(data:any){
   return localStorage.getItem('token');
  }
 
-private UserInfoUrl ="https://bsapi6191.azurewebsites.net/api/Users";
+private UserInfoUrl ="https://apibook61.azurewebsites.net/api/Users";
 
 getUserinfo(){
   return this.httpClient.get(this.UserInfoUrl);
@@ -85,16 +85,17 @@ postUserinfo(user:any){
 // }
 
 
- private url='https://bsapi6191.azurewebsites.net/api/Orders';
+ private url='https://apibook61.azurewebsites.net/api/Orders';
  OrderApi(){ 
   return this.httpClient.get(this.url)
  }
 
  //book crud and cart part
 
- book_url = "https://bsapi6191.azurewebsites.net/api/Books";
- cart_url = "https://bsapi6191.azurewebsites.net/api/Carts";
- order_url = "https://bsapi6191.azurewebsites.net/api/Orders"; 
+
+ book_url = "https://apibook61.azurewebsites.net/api/Books";
+ cart_url = "https://apibook61.azurewebsites.net/api/Carts";
+ order_url = "https://apibook61.azurewebsites.net/api/Orders"; 
 
   booklist(){
     return this.httpClient.get(this.book_url);
@@ -121,7 +122,7 @@ postUserinfo(user:any){
   }
 
   getOrderByUserId(id:any){
-    return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Orders/ordersByUsersId?userId="+id);
+    return this.httpClient.get("https://apibook61.azurewebsites.net/api/Orders/ordersByUsersId?userId="+id);
   }
 
   getCart(){
@@ -129,11 +130,11 @@ postUserinfo(user:any){
   }
 
   getCartByUserId(id:any){
-    return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Carts/cartsByUsersId?userId="+id)
+    return this.httpClient.get("https://apibook61.azurewebsites.net/api/Carts/cartsByUsersId?userId="+id)
   }
 
   getBookByBookId(){
-    return this.httpClient.get("https://bsapi6191.azurewebsites.net/api/Carts/carts-with-orders");
+    return this.httpClient.get("https://apibook61.azurewebsites.net/api/Carts/carts-with-orders");
   }
 
   deleteCartByID(id:number){

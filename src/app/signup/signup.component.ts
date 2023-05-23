@@ -19,7 +19,7 @@ form={
 }
   
   userData:any;
-
+  error="";
   constructor(private router:Router, private bookapp:BookAppService){
     bookapp.getUserinfo().subscribe(x=>{
       this.userData=x;
@@ -58,13 +58,15 @@ form={
       
       this.bookapp.postUserinfo(bodydata).subscribe(x=>{
         console.log("inserted succesfully")
-        if(bodydata.Email != '' && bodydata.Name != '' && bodydata.Password != '' )
+        if(bodydata.Email == '' && bodydata.Name == '' && bodydata.Password == '' )
         {
-          this.router.navigateByUrl('');
+          this.error ="Please fill all details"
+          console.log(this.error)
+          this.router.navigateByUrl('register');
         }
         else
         {
-          this.router.navigateByUrl('register');
+          this.router.navigateByUrl('');
         }
         
       })
