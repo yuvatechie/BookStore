@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "rg-sprint",
+      "defaultValue": "cg-sprint",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Name of the resource group for the resource. It is recommended to put resources under same resource group for better tracking."
@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('sabookstore6191', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('sprint-DB', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -49,15 +49,26 @@
           "contentVersion": "1.0.0.0",
           "resources": [
             {
-              "sku": {
-                "name": "Standard_LRS",
-                "tier": "Standard"
-              },
-              "kind": "StorageV2",
-              "name": "sabookstore6191",
-              "type": "Microsoft.Storage/storageAccounts",
+              "kind": "v12.0",
               "location": "[parameters('resourceLocation')]",
-              "apiVersion": "2017-10-01"
+              "name": "sp-server6191",
+              "type": "Microsoft.Sql/servers",
+              "apiVersion": "2017-10-01-preview"
+            },
+            {
+              "sku": {
+                "name": "Basic",
+                "tier": "Basic",
+                "capacity": 5
+              },
+              "kind": "v12.0,user",
+              "location": "[parameters('resourceLocation')]",
+              "name": "sp-server6191/sprint-DB",
+              "type": "Microsoft.Sql/servers/databases",
+              "apiVersion": "2017-10-01-preview",
+              "dependsOn": [
+                "sp-server6191"
+              ]
             }
           ]
         }
@@ -65,6 +76,6 @@
     }
   ],
   "metadata": {
-    "_dependencyType": "storage.azure"
+    "_dependencyType": "mssql.azure"
   }
 }

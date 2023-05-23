@@ -75,22 +75,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-builder.Services.AddCors();/// for cors
-app.UseCors(x => x.AllowAnyOrigin()
-       .AllowAnyMethod()
-       .AllowAnyHeader());//for cors
-//builder.Services.AddCors(x=>{
-//x.AddPolicy("AllowAll",
-//.AllowAnyOrigin();
-//.AllowAnyMethod()
-//.AllowAnyHeader());
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-   
-}
+
+
+// Allowing api data to be transmitted via https
+app.UseCors(x => x
+.AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader());
+
+
 app.UseSwagger();
 app.UseSwaggerUI();
+
+// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+// app.UseSwagger();
+// app.UseSwaggerUI();
+//}
 
 app.UseHttpsRedirection();
 

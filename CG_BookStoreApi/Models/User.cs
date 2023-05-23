@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace CG_BookStoreApi.Models
@@ -14,6 +15,7 @@ namespace CG_BookStoreApi.Models
 
         public int Id { get; set; }
         public string Name { get; set; } = null!;
+        [EmailAddress]
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
         public string Role { get; set; } = null!;

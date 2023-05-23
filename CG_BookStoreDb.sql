@@ -55,10 +55,5 @@ VALUES
     ('To Kill a Mockingbird', 'Harper Lee', 'J. B. Lippincott & Co.', 9.99, '2021-05-20','https://www.thebookcollector.co.uk/sites/default/files/the-book-collector-example-2018-04.pdf')
    
 
-
-   select *from Carts
-   select *from Orders
-   select *from Users
    select *from Books
-
-   select *from Orders
+  

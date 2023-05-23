@@ -10,6 +10,10 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>CG_BookStoreApi.Models.CG_BookStoreDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\user103\Documents\CG_BookStore\CG_BookStoreApi\Properties\PublishProfiles\bsapi6191 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\user103\Documents\CG_BookStore\CG_BookStoreApi\Properties\PublishProfiles\Apibook61 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>CG_BookStoreApi</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

@@ -118,8 +118,8 @@ namespace CG_BookStoreApi.Controllers
             //upload blob
             bool isUpload = await Helper.UploadBlob(config, book);
 
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
+           //_context.Books.Add(book);
+          //  await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }

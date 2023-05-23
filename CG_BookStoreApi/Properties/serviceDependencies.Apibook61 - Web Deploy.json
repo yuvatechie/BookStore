@@ -2,14 +2,14 @@
   "dependencies": {
     "mssql1": {
       "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/cgsprint6191/databases/BookStoreDb",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sp-server6191/databases/sprint-DB",
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:sqlConnectionString",
       "dynamicId": null
     },
     "storage1": {
       "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/sabookstore6191",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/sabookstore",
       "type": "storage.azure",
       "connectionId": "ConnectionStrings:StorAccConnString",
       "dynamicId": null

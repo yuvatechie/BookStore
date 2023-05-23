@@ -14,6 +14,7 @@ IConfiguration config,
 Book book)
         {
             string blobConnString = config.GetConnectionString("StorAccConnString");
+           // string blobConnString = config.GetConnectionString("sqlConnectionString");
             BlobServiceClient client = new BlobServiceClient(blobConnString);
             string container = config.GetValue<string>("Container");
             var containerClient = client.GetBlobContainerClient(container);
